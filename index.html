@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Merchant</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <meta charset='utf-8'>
+    </head>
+
+<style>
+    @font-face{
+      font-family: 'Exo 2';
+      src: url('./Exo2-Regular.ttf');
+    }
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: rgb(128, 128, 128);
+  text-decoration: none;
+}
+
+input {
+  font: 16px/26px 'Exo 2', sans-serif;
+}
+
+body {
+  color: #666;
+  background-color: #f1f2f2;
+  font: 16px/26px 'Exo 2', sans-serif;
+}
+
+.bOx-form-wrap {
+  background: linear-gradient(180deg, rgba(0,0,0,1) 61%, rgba(115,39,204,1) 100%, rgba(81,16,173,1) 100%);
+  width: 320px;
+  height: 500px;
+  margin: 3em auto;
+  box-shadow: 0px 1px 8px #bebebe;
+  -webkit-box-shadow: 0px 1px 8px #bebebe;
+  -moz-box-shadow: 0px 1px 8px #bebebe;
+}
+.bOx-form-wrap .bOx-tabs {
+  overflow: hidden;
+}
+.bOx-form-wrap .bOx-tabs h3 {
+  float: left;
+  width: 33.3333%;
+}
+.bOx-form-wrap .bOx-tabs h3 a {
+  padding: 0.5em 0;
+  text-align: center;
+  font-weight: 400;
+  background-color: #666666;
+  display: block;
+  color: #fff;
+}
+.bOx-form-wrap .bOx-tabs h3 a.bOx-active {
+  background-color: #000000;
+}
+.bOx-form-wrap .bOx-tabs-content {
+  margin-top: 0.5em;
+  padding: 1.5em;
+  height: 350px;
+}
+.bOx-form-wrap .bOx-tabs-content div[data-id$='tab-content'] {
+  display: none;
+}
+.bOx-form-wrap .bOx-tabs-content .bOx-active {
+  display: block !important;
+}
+.bOx-form-wrap form .input {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: #c9c9c9;
+  font-family: inherit;
+  padding: 0.8em 0 10px 0.8em;
+  border: 1px solid #cfcfcf;
+  outline: 0;
+  display: inline-block;
+  margin: 0 0 0.8em 0;
+  padding-right: 2em;
+  width: 100%;
+  background-color: rgb(14, 14, 14);
+}
+.bOx-form-wrap form .button {
+  width: 100%;
+  padding: 0.8em 0 10px 0.8em;
+  background-color: #56D6AB;
+  border: none;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.bOx-form-wrap form .button:hover {
+  background-color: #99FFDF;
+}
+.bOx-form-wrap form .checkbox {
+  visibility: hidden;
+  padding: 20px;
+  margin: 0.5em 0 1.5em;
+}
+.bOx-form-wrap form .checkbox:checked + label:after {
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+.bOx-form-wrap form label[for] {
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+}
+.bOx-form-wrap form label[for]:before {
+  content: '';
+  position: absolute;
+  border: 1px solid #cfcfcf;
+  width: 17px;
+  height: 17px;
+  top: 0px;
+  left: -14px;
+}
+.bOx-form-wrap form label[for]:after {
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+  filter: alpha(opacity=0);
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  background-color: transparent;
+  top: 4px;
+  left: -10px;
+  border: 3px solid #28a55f;
+  border-top: none;
+  border-right: none;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.bOx-form-wrap .bOx-foot {
+  margin-top: -2.5em;
+}
+.bOx-form-wrap .bOx-foot p {
+  text-align: center;
+  font-size: 14px;
+}
+.bOx-ccv-and-moth {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.bOx-ccv-divi {
+  width: 50%;
+  position: relative;
+  display: inline-block;
+}
+#logoPci {
+  display: none;
+}
+#im {
+    pointer-events: none; 
+    cursor: default;
+}
+#logosCard {
+  margin-top: 20px;
+}
+</style>
+
+
+<div class='bOx-form-wrap'>
+  <div class='bOx-tabs'>
+    <h3><a href='#bOx-cash-tab-content' bOx-data-target='bOx-cash-tab-content'><img id="im" src='cash.png' alt='logo_kajita' height='25' />&nbsp;&nbsp;Cash</a></h3>
+    <h3><a href='#bOx-transfer-tab-content' bOx-data-target='bOx-transfer-tab-content'><img id="im" src='bank-transfer.png' alt='logo_kajita' height='25' />&nbsp;Transfer</a></h3>
+    <h3><a class='bOx-active' href='#bOx-card-tab-content' bOx-data-target='bOx-card-tab-content'><img id="im" src='credit-card.png' alt='logo_kajita' height='25' />&nbsp;&nbsp;Card</a></h3>
+  </div>
+  
+
+  <div class='bOx-tabs-content'>
+
+    <div data-id='bOx-card-tab-content' class='bOx-active'>
+      <form  action='' method='post'>
+        <input type='text' class='input' id='card_name' autocomplete='off' placeholder='Card Name'>
+        <input type='text' class='input' name='Enter Card Number' placeholder='**** **** **** ****'>
+        <div class='bOx-ccv-and-moth'>
+          <div class='bOx-ccv-divi' style='padding-right: 5px;'>
+            <input type='text' class='input' name='09/22' placeholder='MM/YY'>
+          </div>
+          <div class='bOx-ccv-divi'>
+            <input type='text' class='input' name='CVV' placeholder='***'>
+          </div>
+        </div>
+        <input type='submit' class='button' value='Pay $0.00'>
+      </form>
+      <center><a><img id="logosCard" src='tarjetas-credito.png' alt='type_card' height='25' /></a></center>
+    </div>
+
+    <div data-id='bOx-cash-tab-content'>
+      <form action='' method='post'>
+        <input type='text' class='input' id='cash_name1' autocomplete='off' placeholder='Firs Name'>
+        <input type='text' class='input' id='cash_name2' autocomplete='off' placeholder='Last Name'>
+        <input type='email' class='input' id='user_email' autocomplete='off' placeholder='Email'>
+        <input type='submit' class='button' value='Pay $0.00'>
+      </form>  
+    </div>
+
+
+    <div data-id='bOx-transfer-tab-content'>
+
+      <form action='' method='post'>
+        <input type='text' class='input' id='cash_name1' autocomplete='off' placeholder='Firs Name'>
+        <input type='text' class='input' id='cash_name2' autocomplete='off' placeholder='Last Name'>
+        <input type='email' class='input' id='user_email' autocomplete='off' placeholder='Email'>
+        <select class='input'>
+          <option value='SELECT_BANK'>---Select Bank---</option>
+          <option value=''>Chile Bank</option>
+          <option value=''>Brasil Bank</option>
+          <option value=''>Panama Bank</option>
+          <option value=''>Peru Bank</option>
+        </select>
+        <input type='submit' class='button' value='Pay $0.00'>
+      </form>
+    </div>
+    </div>
+  
+</div>
+
+<script>
+
+window.addEventListener('load', function () {
+
+  let theTabs = document.querySelectorAll('[bOx-data-target]'),
+    contentPanes = document.querySelectorAll('[data-id]'),
+    i;
+
+  function bOx_theTabClicks(e) {
+    e.preventDefault();
+    let clickedTab = e.target,
+      activePaneId = clickedTab.getAttribute('bOx-data-target'),
+      activePane = document.querySelectorAll(
+        '[data-id="' + activePaneId + '"]'
+      );
+
+    for (i = 0; i < theTabs.length; i++) {
+    
+      theTabs[i].classList.remove('bOx-active');
+      contentPanes[i].classList.remove('bOx-active');
+    }
+
+    clickedTab.classList.add('bOx-active');
+    activePane[0].classList.add('bOx-active');
+  }
+
+  for (i = 0; i < theTabs.length; i++) {
+    theTabs[i].addEventListener('click', bOx_theTabClicks);
+  }
+});
+</script>
+
+</html>
